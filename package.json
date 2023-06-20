@@ -1,0 +1,68 @@
+{
+  "name": "electron-autoupdater",
+  "version": "2.0.1",
+  "description": "New Electron Updater Application",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "watch": "nodemon --exec electron .",
+    "build": "rm -rf dist && electron-builder --mac",
+    "build:all": "rm -rf dist && electron-builder -mwl",
+    "build:win": "electron-builder --win",
+    "build:linux": "rm -rf dist && electron-builder --linux"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Dushyant Khoda",
+    "email": "dushyant@yopmail.com"
+  },
+  "homepage": "https://example.com",
+  "license": "ISC",
+  "dependencies": {
+    "electron-log": "^4.4.8",
+    "electron-updater": "^5.3.0"
+  },
+  "repository": "https://github.com/Dushyant-Khoda/auto-updater-electron",
+  "publish": {
+    "provider": "github",
+    "releaseType": "release"
+  },
+  "build": {
+    "appId": "com.demo.autoupdater",
+    "productName": "Electron Autoupdater",
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "linux": {
+      "icon": "build/icon.ico",
+      "category": "Utility",
+      "mimeTypes": [
+        "x-scheme-handler/autoupdater"
+      ],
+      "desktop": {
+        "exec": "autoupdater %U"
+      },
+      "target": [
+        "AppImage",
+        "deb",
+        "snap"
+      ]
+    },
+    "directories": {
+      "output": "dist"
+    }
+  },
+  "devDependencies": {
+    "electron": "^25.1.1",
+    "electron-builder": "^24.4.0"
+  }
+}
